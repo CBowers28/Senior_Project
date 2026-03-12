@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Four marker setup — homography based
+    Origin: bottom-left
+    Units: centimeters
+    Convention: X right, Y up
+
+    Update world_x/world_y with your actual measurements.
+-->
+<world_plane>
+    <marker id="0" world_x="0.0"   world_y="0.0"  world_z="0.0" description="Bottom-left"/>
+    <marker id="1" world_x="0.0"  world_y="47.0" world_z="0.0" description="Top-middle"/>
+    <marker id="2" world_x="52.0"   world_y="47.0" world_z="0.0" description="Top-left"/>
+    <marker id="3" world_x="52.0" world_y="0.0" world_z="0.0" description="Top-right"/>
+</world_plane>
