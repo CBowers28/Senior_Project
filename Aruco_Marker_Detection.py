@@ -13,7 +13,7 @@ if not cap.isOpened():
     print(f"Cannot open camera {camera_idx}")
     exit()
 
-# Set Full HD resolution
+# Set the Full HD resolution
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 cap.set(cv2.CAP_PROP_FPS, 30)
@@ -72,7 +72,7 @@ while True:
             # Uncomment this line to see what's being detected:
             # print(f"Marker {ids[i][0]}: area = {marker_area:.0f} pixels²")
 
-            # Only keep markers above minimum area
+            # Only keep markers above the minimum area
             if marker_area >= MIN_MARKER_AREA:
                 filtered_corners.append(corner)
                 filtered_ids.append(ids[i])
@@ -89,7 +89,7 @@ while True:
             detected_ids = filtered_ids.flatten().tolist()
             print(f"Detected markers: {detected_ids}")
 
-            # Draw marker IDs on the frame
+            # Draw marker IDs on frame
             for i, corner in enumerate(filtered_corners):
                 # Get the center of the marker
                 center = corner[0].mean(axis=0).astype(int)

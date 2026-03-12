@@ -9,7 +9,7 @@ print("  2. Calibration was completed previously in Pupil Capture")
 print()
 
 try:
-    # Create ZMQ context and connect to Pupil Service
+    # Create ZMQ context and connect it to the Pupil Service
     ctx = zmq.Context()
     pupil_remote = ctx.socket(zmq.REQ)
     pupil_remote.connect('tcp://localhost:50020')
@@ -17,7 +17,7 @@ try:
     print("[1/6] Connected to Pupil Service")
 
 
-    # Convenience function
+    # function for convenience
     def send_recv_notification(n):
         pupil_remote.send_string(f"notify.{n['subject']}", flags=zmq.SNDMORE)
         pupil_remote.send(msgpack.dumps(n))
@@ -51,7 +51,7 @@ try:
 
     time.sleep(2)
 
-    # Get subscriber port
+    # Get the subscriber port
     print("[6/6] Getting subscriber port...")
     pupil_remote.send_string('SUB_PORT')
     sub_port = pupil_remote.recv_string()
