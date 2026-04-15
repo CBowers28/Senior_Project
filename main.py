@@ -79,7 +79,7 @@ def main():
                             continue
                         frame_h, frame_w = frame.shape[:2]
                         detected = detect_markers(frame)
-                        mapper.update_pose(detected)
+                        mapper.update_pose(detected, frame_h)
                         visible_marker_ids = set(detected.keys())
                         latest_scene = draw_markers(frame, detected)
 

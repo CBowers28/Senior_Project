@@ -32,7 +32,7 @@ class GazeMapper:
         self._active_markers = 0
         self._pose_source    = "none"
 
-    def update_pose(self, detected: dict) -> bool:
+    def update_pose(self, detected: dict, frame_h: float) -> bool:
         """
         Compute pixel->world homography from detected marker centers.
         detected: { marker_id: corners (4x2 float) }
@@ -47,8 +47,13 @@ class GazeMapper:
             return False
 
         # Use marker centers as correspondences
-        img_pts   = np.array([known[mid].mean(axis=0) for mid in known],
-                             dtype=np.float64)
+        img_pts = np.array(
+            [np.array([known[mid].mean(axis=0)[0],
+                       frame_h - known[mid].mean(axis=0)[1]])
+             for mid in known],
+            dtype=np.float64
+        )
+
         world_pts = np.array([self._world_centers[mid] for mid in known],
                              dtype=np.float64)
 
